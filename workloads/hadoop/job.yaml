@@ -1,3 +1,5 @@
+# job.yaml
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -13,19 +15,21 @@ spec:
     spec:
       containers:
       - name: dummy-job
-        image: shubhamdang/my_hadoop_image:latest
+        image: openflighthpc/hadoop:latest
         command: [ "python3", "/opt/main.py" ]
         env:
           - name: MINIO_IP
-            value: "10.151.15.78"
+            value: <minio ip like "10.151.15.78">
           - name: MINIO_PORT
-            value: "31252"
+            value: <minio port like "31100">
+          # Minio Access Key   
           - name: MINIO_AKEY
-            value: "Mq6wmeNk0NOc0vD9Efut"
+            value: <minio-access-key>
+          # Minio Secret Key   
           - name: MINIO_SKEY
-            value: "Z3ETBqC3GuIiU9PomjBbmmC5h8I5I7WgN1wNWlCG"
+            value: <minio-secret-key>
           - name: BUCKET_NAME
-            value: "hadoop"
+            value: <minio bucket name like "hadoop">
         resources:
           requests:
             cpu: 500m
