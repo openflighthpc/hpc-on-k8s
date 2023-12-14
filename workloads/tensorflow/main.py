@@ -6,7 +6,7 @@ import subprocess
 
 def run_fastqc(fastq_file):
 
-    command = ["bash", fastq_file]
+    command = ["python", fastq_file]
     process = subprocess.Popen(command, stdout=subprocess.PIPE)
     return_code = process.wait()
     output = process.stdout.read().decode("utf-8")
